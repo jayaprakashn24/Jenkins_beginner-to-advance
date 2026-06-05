@@ -2,20 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Run Tests') {
+        stage('Checkout') {
             steps {
-                sh 'python3 test_app.py'
+                git branch: 'main',
+                    url: 'https://github.com/jayaprakashn24/Jenkins_beginner-to-advance.git'
             }
         }
-    }
 
-    post {
-        success {
-            echo 'All tests passed successfully'
-        }
-
-        failure {
-            echo 'Tests failed'
+        stage('Run Python') {
+            steps {
+                dir('Day - 10') {
+              	   sh 'python3 test_app.py'
+                }
+            }
         }
     }
 }
