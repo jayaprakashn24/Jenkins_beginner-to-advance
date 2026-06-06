@@ -8,7 +8,6 @@ pipeline {
                     url: 'https://github.com/jayaprakashn24/Jenkins_beginner-to-advance.git'
             }
         }
-
         stage('Run Python') {
             steps {
                 dir('Day - 9') {
