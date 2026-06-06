@@ -2,15 +2,27 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/jayaprakashn24/Jenkins_beginner-to-advance.git'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                dir('Day - 11') {
+                    sh 'pip3 install -r requirements.txt'
+                }
             }
         }
 
         stage('Run Application') {
             steps {
-                sh 'python3 app.py'
+                dir('Day - 11') {
+                    sh 'python3 app.py'
+                }
             }
         }
     }
